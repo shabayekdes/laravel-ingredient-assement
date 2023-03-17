@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('image')->default('images/products/default.jpg');
+            $table->string('image')->default('images/products/default.png');
             $table->timestamps();
         });
     }
