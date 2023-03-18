@@ -82,6 +82,9 @@
                                             </button>
                                         </x-slot>
                                         <x-slot name="content">
+                                            <x-dropdown-link :href="route('products.show', $product)">
+                                                {{ __('View') }}
+                                            </x-dropdown-link>
                                             <x-dropdown-link :href="route('products.edit', $product)">
                                                 {{ __('Edit') }}
                                             </x-dropdown-link>

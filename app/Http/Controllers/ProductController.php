@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredient;
 use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -64,6 +65,20 @@ class ProductController extends Controller
 
         Product::create($validated);
         return redirect(route('products.index'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Product $product
+     * @return Application|Factory|View
+     */
+    public function show(Product $product)
+    {
+        return view('products.show', [
+            'product' => $product,
+            'ingredients' => Ingredient::select(['id', 'name'])->get(),
+        ]);
     }
 
     /**
