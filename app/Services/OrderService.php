@@ -14,7 +14,7 @@ class OrderService
             $order->items()->create($item);
 
             $product = Product::find($item['product_id']);
-            $order_total += $product->price;
+            $order_total += $product->price * $item['quantity'];
             IncrementOrderQuantity::dispatch($product, $item['quantity']);
         }
 
