@@ -16,7 +16,6 @@ class IngredientObserver
         $qty = $ingredient->quantity * 0.5;
         if ($ingredient->isDirty('order_quantity') && $qty <= $ingredient->order_quantity) {
             Mail::to('esmail.shabayek@gmail.com')->send(new AlertOrderQuantityMail($ingredient));
-            dump('ddd');
             $ingredient->update(['order_quantity' => 0]);
         }
     }
