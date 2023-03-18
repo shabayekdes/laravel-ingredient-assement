@@ -13,6 +13,12 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::factory(50)->create();
+        // Product::factory(50)->create();
+
+        Product::create([
+            'title' => 'Beef Burger',
+            'price' => 150,
+            'description' => 'Juicy, big, loaded with toppings of my choice.'
+        ]);
     }
 }

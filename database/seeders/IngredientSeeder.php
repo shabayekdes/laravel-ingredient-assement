@@ -13,6 +13,19 @@ class IngredientSeeder extends Seeder
      */
     public function run(): void
     {
-        Ingredient::factory(10)->create();
+        // Ingredient::factory(10)->create();
+
+        Ingredient::create([
+            'name' => 'Beef',
+            'quantity' => 20000
+        ]);
+        Ingredient::create([
+            'name' => 'Cheese',
+            'quantity' => 5000
+        ]);
+        Ingredient::create([
+            'name' => 'Onion',
+            'quantity' => 1000
+        ]);
     }
 }
