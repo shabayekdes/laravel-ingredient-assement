@@ -4,9 +4,8 @@
             {{ __('Product Details') }}
         </h2>
     </x-slot>
-    <div class="py-12">
+    <div class="py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-
             <div class="mb-3">
                 <nav aria-label="Breadcrumb">
                     <ol role="list" class="flex items-center gap-1 text-sm text-gray-600">
@@ -93,7 +92,7 @@
                                         </h1>
                                     </div>
 
-                                    <p class="text-lg font-bold">$119.99</p>
+                                    <p class="text-lg font-bold">${{ $product->price }}</p>
                                 </div>
 
                                 <div class="mt-4">
@@ -145,7 +144,7 @@
                         <div class="flex flex-col lg:items-start items-center">
                             <div class="flex-grow">
                                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">-
-                                    {{ $ingredient->quantity }}g {{ ucfirst($ingredient->name) }}</h2>
+                                    {{ $ingredient->pivot->quantity_label }} {{ ucfirst($ingredient->name) }}</h2>
                             </div>
                         </div>
                     @endforeach

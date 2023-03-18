@@ -42,7 +42,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('products.create', [
+            'product' => new Product
+        ]);
     }
 
     /**
@@ -56,6 +58,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|min:3',
             'description' => 'required|string',
+            'price' => 'required|numeric'
         ]);
 
         if ($request->hasFile('image')) {
@@ -106,6 +109,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|min:3',
             'description' => 'required|string',
+            'price' => 'required|numeric'
         ]);
 
         if ($request->hasFile('image')) {
