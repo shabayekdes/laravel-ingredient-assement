@@ -32,7 +32,8 @@ class IncrementOrderQuantity implements ShouldQueue
     public function handle(): void
     {
         foreach ($this->product->ingredientProducts as $ingredient) {
-            Ingredient::where('id', $ingredient->ingredient_id)->increment('order_quantity', $ingredient->quantity * $this->quantity);
+            $ingredientModel = Ingredient::find($ingredient->ingredient_id);
+            $ingredientModel->update(['order_quantity' => $ingredientModel->order_quantity + ($ingredient->quantity * $this->quantity)]);
         }
     }
 }
