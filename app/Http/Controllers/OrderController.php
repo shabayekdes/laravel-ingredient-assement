@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateOrderRequest;
 use App\Jobs\IncrementOrderQuantity;
 use App\Models\Ingredient;
 use App\Models\Order;
@@ -24,19 +25,14 @@ class OrderController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(CreateOrderRequest $request)
     {
-        $request->validate([
-            'products' => 'required|array',
-            'products.*.product_id' => 'required|exists:products,id',
-            'products.*.quantity' => 'required|numeric',
-        ]);
-
         $order = Order::create();
         $order_total = $this->orderService->createOrder($order, $request->get('products'));
         $order->update(['order_total' => $order_total]);
 
         return response()->json([
+            'success' => true,
             'message' => 'Order was created successfully',
             'data' => $order
         ]);
